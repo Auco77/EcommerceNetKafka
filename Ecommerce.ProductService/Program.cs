@@ -1,4 +1,5 @@
 using Ecommerce.ProductService.Data;
+using Ecommerce.ProductService.Kafka;
 using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
 
@@ -11,6 +12,8 @@ builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 builder.Services.AddDbContext<ProductDbContext>(options =>
 	options.UseSqlServer(builder.Configuration.GetConnectionString("Product")));
+
+builder.Services.AddHostedService<KafkaConsumer>();
 
 var app = builder.Build();
 

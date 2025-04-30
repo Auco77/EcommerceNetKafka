@@ -1,4 +1,5 @@
 using Ecommerce.OrderService.Data;
+using Ecommerce.OrderService.Kafka;
 using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
 
@@ -11,6 +12,8 @@ builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 builder.Services.AddDbContext<OrderDbContext>(options =>
 	options.UseSqlServer(builder.Configuration.GetConnectionString("Order")));
+
+builder.Services.AddScoped<IKafkaProducer, KafkaProducer>();
 
 var app = builder.Build();
 
