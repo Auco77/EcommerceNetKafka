@@ -16,12 +16,12 @@ namespace Ecommerce.OrderService.Controllers
 		public async Task<OrderModel?> GetOrderAsync(int id) => await dbContext.Orders.FindAsync(id);
 
 		[HttpPost]
-		public async Task<IActionResult> CreateOrder(OrderModel order)
+		public async Task<OrderModel> CreateOrder(OrderModel order)
 		{
 			order.OrderDate = DateTime.Now;
 			dbContext.Orders.Add(order);
 			await dbContext.SaveChangesAsync();
-			return CreatedAtAction(nameof(GetOrderAsync), new { id = order.Id }, order);
+			return order;
 		}
 	}
 }

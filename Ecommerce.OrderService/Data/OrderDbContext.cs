@@ -19,7 +19,8 @@ namespace Ecommerce.OrderService.Data
 			modelBuilder.Entity<OrderModel>().Property(o => o.CustomerName).IsRequired().HasMaxLength(128);
 			modelBuilder.Entity<OrderModel>().Property(o => o.ProductId).IsRequired();
 			modelBuilder.Entity<OrderModel>().Property(o => o.ProductName).IsRequired().HasMaxLength(128);
-			modelBuilder.Entity<OrderModel>().Property(o => o.Price).IsRequired();
+			modelBuilder.Entity<OrderModel>().Property(o => o.ProductPrice).IsRequired();
+			modelBuilder.Entity<OrderModel>().Property(o => o.Quantity).IsRequired();
 			modelBuilder.Entity<OrderModel>().Property(o => o.OrderDate).IsRequired();
 			base.OnModelCreating(modelBuilder);
 		}
